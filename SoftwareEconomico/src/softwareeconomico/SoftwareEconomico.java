@@ -59,18 +59,18 @@ public class SoftwareEconomico {
            
            JOptionPane.showMessageDialog(null,"Confirme o Segundo Produto \n"+tipoProduto+" "+Marca2+"\n\nPreço R$ "+Preço2+"\n\nQuantidade ou Volumer : "+Quantidade2+unidadeDeMedida2);
            
-           int confirmacaoP2 = JOptionPane.showConfirmDialog(null, "O Primeiro Poduto está correto","Produto",JOptionPane.YES_NO_OPTION);
+           int confirmacaoP2 = JOptionPane.showConfirmDialog(null, "O Segundo Poduto está correto","Produto",JOptionPane.YES_NO_OPTION);
            Produto2 = (confirmacaoP2 == JOptionPane.YES_OPTION);
             
             } while (Produto2 == false);
             
-            float media1 = Funcoes.calculoValorMedio1(Preço1, Quantidade1);
-            float media2 = Funcoes.calculoValorMedio2(Preço2, Quantidade2);
-            
-            if (media1 > media1) JOptionPane.showMessageDialog(null,"O Produto Com o melhor Custo Benefio é \n"+"Primeiro Produto \n"+tipoProduto+" "+Marca1+"\n\nPreço R$ "+Preço1+"\n\nQuantidade ou Volumer : "+Quantidade1+unidadeDeMedida);
-            if (media1 < media2) JOptionPane.showMessageDialog(null,"O Produto Com o melhor Custo Benefio é \n"+"Segundo Produto \n"+tipoProduto+" "+Marca2+"\n\nPreço R$ "+Preço2+"\n\nQuantidade ou Volumer : "+Quantidade2+unidadeDeMedida2);
-   
+            float media1 = Funcoes.calculoValorMedio1(Preço1, Quantidade1, unidadeDeMedida);
+            float media2 = Funcoes.calculoValorMedio2(Preço2, Quantidade2, unidadeDeMedida2);
+             
+            if (media2 > media1) JOptionPane.showMessageDialog(null,"O Produto Com o melhor Custo Benefio é \n"+"Primeiro Produto \n\n"+tipoProduto+" "+Marca1+" "+Quantidade1+" "+unidadeDeMedida+"\n\nPreço R$ "+Preço1);
+            if (media2 < media1) JOptionPane.showMessageDialog(null,"O Produto Com o melhor Custo Benefio é \n"+"Segundo Produto \n\n"+tipoProduto+" "+Marca2+" "+Quantidade2+" "+unidadeDeMedida2+"\n\nPreço R$ "+Preço2);
         
+            
     }
     
 }
