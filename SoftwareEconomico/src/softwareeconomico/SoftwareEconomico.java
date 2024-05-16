@@ -64,13 +64,28 @@ public class SoftwareEconomico {
             
             } while (Produto2 == false);
             
-            float media1 = Funcoes.calculoValorMedio1(Preço1, Quantidade1, unidadeDeMedida);
-            float media2 = Funcoes.calculoValorMedio2(Preço2, Quantidade2, unidadeDeMedida2);
-             
-            if (media2 > media1) JOptionPane.showMessageDialog(null,"O Produto Com o melhor Custo Benefio é \n"+"Primeiro Produto \n\n"+tipoProduto+" "+Marca1+" "+Quantidade1+" "+unidadeDeMedida+"\n\nPreço R$ "+Preço1);
-            if (media2 < media1) JOptionPane.showMessageDialog(null,"O Produto Com o melhor Custo Benefio é \n"+"Segundo Produto \n\n"+tipoProduto+" "+Marca2+" "+Quantidade2+" "+unidadeDeMedida2+"\n\nPreço R$ "+Preço2);
-        
+            if(unidadeDeMedida.equalsIgnoreCase("Kilograma") || unidadeDeMedida.equalsIgnoreCase("kg")) Quantidade1*=1000;
+            if(unidadeDeMedida.equalsIgnoreCase("Litros") || unidadeDeMedida.equalsIgnoreCase("L")) Quantidade1*=1000;
+            if(unidadeDeMedida2.equalsIgnoreCase("Kilograma") || unidadeDeMedida2.equalsIgnoreCase("kg")) Quantidade2*=1000;
+            if(unidadeDeMedida2.equalsIgnoreCase("Litros") || unidadeDeMedida2.equalsIgnoreCase("L")) Quantidade2*=1000;
             
+            
+            float media1 = Funcoes.calculoCustoMedio1(Preço1, Quantidade1);
+            float media2 = Funcoes.calculoCustoMedio2(Preço2, Quantidade2);
+            float precoProduto1 = Funcoes.CustoProduto1(media1, media2, Quantidade1, Quantidade2);
+            float precoProduto2 = Funcoes.CustoProduto2(media1, media2, Quantidade1, Quantidade2);
+            
+            if (Quantidade1 > Quantidade2) {
+                if (Preço1 > precoProduto2) {                    
+                JOptionPane.showMessageDialog(null,"O Produto Com o melhor Custo Benefio é \n"+"Segundo Produto \n\n"+tipoProduto+" "+Marca2+" "+Quantidade2+" "+unidadeDeMedida2+"\n\nPreço R$ "+Preço2);
+                }else JOptionPane.showMessageDialog(null,"O Produto Com o melhor Custo Benefio é \n"+"Primeiro Produto \n\n"+tipoProduto+" "+Marca1+" "+Quantidade1+" "+unidadeDeMedida+"\n\nPreço R$ "+Preço1);
+        }
+            if (Quantidade1 < Quantidade2) {
+                if (Preço2 > precoProduto1) {
+                    JOptionPane.showMessageDialog(null,"O Produto Com o melhor Custo Benefio é \n"+"Primeiro Produto \n\n"+tipoProduto+" "+Marca1+" "+Quantidade1+" "+unidadeDeMedida+"\n\nPreço R$ "+Preço1);
+                }else JOptionPane.showMessageDialog(null,"O Produto Com o melhor Custo Benefio é \n"+"Segundo Produto \n\n"+tipoProduto+" "+Marca2+" "+Quantidade2+" "+unidadeDeMedida2+"\n\nPreço R$ "+Preço2);
+
+        }          
     }
     
 }
